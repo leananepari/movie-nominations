@@ -16,8 +16,122 @@ html,body {
 .app {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  .wrap {
+    margin-top: 40px;
+    width: 80%;
+  }
 }
+
+
+/*==========================================================
+  HEADER
+=========================================================*/
+
+.header {
+  font-size: 24px;
+  margin-bottom: 40px;
+  
+}
+
+
+/*==========================================================
+  SEARCH BAR
+=========================================================*/
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  input {
+    height: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+}
+
+
+/*==========================================================
+  BANNER
+=========================================================*/
+.banner {
+    margin-bottom: 10px;
+    color: black;
+    padding: 20px;
+    background-color: green;
+    border-radius: 5px;
+  }
+
+/*==========================================================
+  MOVIE LISTS
+=========================================================*/
 
 .movie-list-wrap {
   display: flex;
+
+  .movie-title-wrap {
+    width: 50%;
+
+    h2 {
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin: 10px 0 10px 0px
+    }
+    .movie-list {
+      margin-top: 20px;
+      border: 1px solid lightgray;
+      height: calc(100vh - 291px);
+      overflow-y: scroll;
+  
+      .movie-card-wrap {
+        display: flex;
+        width: 80%;
+        background-color: #fafafa;
+        padding: 10px;
+        margin: 5px 0 5px 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+  
+        .right-side {
+          display: flex;
+          flex-direction: column;
+          margin-left: 5px;
+  
+          .title {
+            font-size: 18px;
+            font-weight: 400;
+          }
+    
+          .year {
+            font-size: 16px;
+            font-weight: 200;
+            margin-top: 5px;
+          }
+          .btn {
+            cursor: pointer;
+            height: 30px;
+            width: 80px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            margin-top: 10px;
+          }
+  
+        }
+  
+        .image {
+          max-width: 150px;
+          height: auto;
+        }
+  
+      }
+    }
+
+  }
 }

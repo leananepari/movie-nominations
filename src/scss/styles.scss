@@ -1,17 +1,17 @@
 @import "default";
 @import "reset";
 
-// @media only screen and (min-width: 0px) and (max-width: 399px) {
-//   @import "small";
+@media only screen and (min-width: 0px) and (max-width: 500px) {
+  @import "small";
 
-// }/* end of media query */
+}/* end of media query */
 
-// @media only screen and (min-width: 400px) and (max-width: 700px) {
-//   @import "medium";
+@media only screen and (min-width: 501px) and (max-width: 700px) {
+  @import "medium";
 
-// }/* end of media query */
+}/* end of media query */
 
-// @media only screen and (min-width: 700px) and (max-width: 2000px) {
-//   @import "large";
+@media only screen and (min-width: 700px) and (max-width: 2000px) {
+  @import "large";
 
-// }/* end of media query */
+}/* end of media query */
