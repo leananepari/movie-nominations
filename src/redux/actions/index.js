@@ -5,7 +5,7 @@ export const getSearchResults = ( search ) => {
     dispatch({ type: 'GET_SEARCH_RESULTS_START' });
 
     axios.get(`http://www.omdbapi.com/?s=${search.title}&type=movie&apikey=${process.env.REACT_APP_API_KEY}`)
-      .then(response => {
+      .then(response => { 
         dispatch({ type: 'GET_SEARCH_RESULTS_SUCCESS', list: response.data.Search, search: search.title })
       })
       .catch(error => {
