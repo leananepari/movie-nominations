@@ -5,10 +5,8 @@ import SearchBar from './components/SearchBar';
 import ResultsList from './components/ResultsList';
 import NominationsList from './components/NominationsList';
 import Banner from './components/Banner';
-import { connect } from 'react-redux';
-import { getSearchResults } from './redux/actions';
 
-function App( props ) {
+function App() {
   
   return (
     <div className="app">
@@ -25,15 +23,4 @@ function App( props ) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    searchResult: state.searchResult,
-    resultsList: state.resultsList,
-    nominationsList: state.nominationsList
-  }
-};
-
-export default connect (
-  mapStateToProps,
-  { getSearchResults }
-)(App)
+export default App

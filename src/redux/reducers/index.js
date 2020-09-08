@@ -30,8 +30,10 @@ export const reducer = (state = initialState, action) => {
       };
     
     case 'NOMINATE_MOVIE':
+      // copy nominations list and add a new nomination to the beginning of the list
       let nominations_arr = [...state.nominationsList];
       nominations_arr.unshift(action.payload);
+      // copy lookup table, add a new item to it, and set it to localstorage
       let lookup = {...state.nominationsLookup};
       lookup[action.payload['imdbID']] = action.payload;
       localStorage.setItem('nominations', JSON.stringify(lookup));
@@ -48,12 +50,12 @@ export const reducer = (state = initialState, action) => {
       delete updated[action.payload['imdbID']];
       localStorage.setItem('nominations', JSON.stringify(updated));
 
-    return {
-      ...state,
-      nominationsLookup: updated,
-      nominationsList: state.nominationsList.filter(item => item['imdbID'] !== action.payload['imdbID']),
-      banner: state.nominationsList.lenght === 5 ? true : false
-    }
+      return {
+        ...state,
+        nominationsLookup: updated,
+        nominationsList: state.nominationsList.filter(item => item['imdbID'] !== action.payload['imdbID']),
+        banner: state.nominationsList.lenght === 5 ? true : false
+      }
 
     case 'GET_NOMINATIONS_LIST':
       let savedList = JSON.parse(localStorage.getItem('nominations'));
@@ -65,15 +67,16 @@ export const reducer = (state = initialState, action) => {
         l.push(savedList[key]);
       }
 
-    return {
-      ...state,
-      nominationsList: l,
-      nominationsLookup: savedList === null ? {} : savedList,
-      banner: l.length === 5 ? true : false
-    }
+      return {
+        ...state,
+        nominationsList: l,
+        nominationsLookup: savedList === null ? {} : savedList,
+        banner: l.length === 5 ? true : false
+      }
 
     default:
       return state;
   }
+
 }
 
