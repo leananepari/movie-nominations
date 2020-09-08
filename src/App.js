@@ -1,28 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../src/css/styles.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ResultsList from './components/ResultsList';
 import NominationsList from './components/NominationsList';
+import Banner from './components/Banner';
+import { connect } from 'react-redux';
+import { getSearchResults } from './redux/actions';
 
-function App() {
-  const [results, setResults] = useState([]);
-  const [nominations, setNominations] = useState([]);
-
-  useEffect(() => {
-
-  }, [])
-
+function App( props ) {
+  
   return (
     <div className="app">
-      <Header />
-      <SearchBar />
-      <div className="movie-list-wrap" >
-        <ResultsList />
-        <NominationsList />
+      <div className="wrap">
+        <Header />
+        <SearchBar />
+        <Banner />
+        <div className="movie-list-wrap" >
+          <ResultsList />
+          <NominationsList />
+        </div>
       </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    searchResult: state.searchResult,
+    resultsList: state.resultsList,
+    nominationsList: state.nominationsList
+  }
+};
+
+export default connect (
+  mapStateToProps,
+  { getSearchResults }
+)(App)
