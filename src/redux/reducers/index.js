@@ -42,19 +42,20 @@ export const reducer = (state = initialState, action) => {
         ...state,
         nominationsList: nominations_arr,
         nominationsLookup: lookup,
-        banner: state.nominationsList.length === 5 ? true : false
+        banner: nominations_arr.length === 5 ? true : false
       }
     
     case 'REMOVE_FROM_NOMINATION':
       let updated = {...state.nominationsLookup};
       delete updated[action.payload['imdbID']];
       localStorage.setItem('nominations', JSON.stringify(updated));
+      let updated_list = state.nominationsList.filter(item => item['imdbID'] !== action.payload['imdbID']);
 
       return {
         ...state,
         nominationsLookup: updated,
-        nominationsList: state.nominationsList.filter(item => item['imdbID'] !== action.payload['imdbID']),
-        banner: state.nominationsList.lenght === 5 ? true : false
+        nominationsList: updated_list,
+        banner: updated_list.length === 5 ? true : false
       }
 
     case 'GET_NOMINATIONS_LIST':
